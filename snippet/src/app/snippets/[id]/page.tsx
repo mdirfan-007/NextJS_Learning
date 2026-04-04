@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { prisma } from "@/lib/prisma";
+import Link from "next/link";
 import React from "react";
 
 const PageDetails = async ({ params }: { params: { id: string } }) => {
@@ -12,11 +13,14 @@ const PageDetails = async ({ params }: { params: { id: string } }) => {
   });
 
   return (
-    <div >
+    <div>
       <div className="flex items-center justify-between">
         <h1 className="font-bold text-2xl">{snippets.title}</h1>
         <div className="flex gap-2">
-          <Button variant="outline">Edit</Button>
+          <Link href={`/snippets/${id}/edit`}>
+
+            <Button variant="outline">Edit</Button>
+          </Link>
           <Button variant="destructive">Delete</Button>
         </div>
       </div>
